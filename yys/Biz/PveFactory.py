@@ -11,13 +11,15 @@ PVE_MISS_COUNT = 0
 # mode3:loop
 def start_section(section_num,control_mode,control_num):
     print("pve mode start")
+    global PVE_FB_COUNT
+    global PVE_MISS_COUNT
     if control_mode == 1:
         while PVE_FB_COUNT < control_num:
-            if MISS_COUNT > 50:
-                MISS_COUNT = 0
+            if PVE_MISS_COUNT > 50:
+                PVE_MISS_COUNT = 0
                 wi.set_window_top()
             print("FB_COUNT:", PVE_FB_COUNT)
-            print("MISS_COUNT",MISS_COUNT)
+            print("MISS_COUNT",PVE_MISS_COUNT)
             goto_section()
     print("pve mode end")
     return

@@ -16,9 +16,31 @@ def click_pic(pic):
     x, y = pm.match(img, template)
     if x > 0:
         move_and_click(x, y)
+        return 1
     else:
         return 0
 
+def click_pic_plus(pic,a,b):
+    save_screentshot()
+    img = get_image(SCREENTSHOT_NAME)
+    template = get_image("\\" + pic+".png")
+    x, y = pm.match(img, template)
+    if x > 0:
+        move_and_click(x+a, y+b)
+        return 1
+    else:
+        return 0
+
+def slide_up(pic,h):
+    save_screentshot()
+    img = get_image(SCREENTSHOT_NAME)
+    template = get_image("\\" + pic+".png")
+    x, y = pm.match(img, template)
+    if x > 0:
+        Mouse.slide_up(x, y,h)
+        return 1
+    else:
+        return 0
 
 def has_pic(pic):
     save_screentshot()
