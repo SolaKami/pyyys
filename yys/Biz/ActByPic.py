@@ -1,4 +1,5 @@
 from Biz import BaseControl as gc
+import time
 
 
 # define window judge fundtion
@@ -25,7 +26,8 @@ def is_at_self_break_door_window():
 def is_at_union_break_door_window():
     return  gc.has_pic("unionmode")
 def is_at_attack_break_window():
-    return  gc.has_pic("attackbreak")
+    res = gc.has_pic("attackbreak")
+    return res
 def is_at_readyforfight_window():
     return  gc.has_pic("readyforfight")
 
@@ -38,6 +40,10 @@ def click_goto_fb():
     return  gc.click_pic("exploreratdoor")
 def click_section17():
     return gc.click_pic("section17")
+def click_section(section_num):
+    return gc.click_pic("section%s"%section_num)
+def has_section(section_num):
+    return gc.has_pic("section%s"%section_num)
 def click_box():
     return gc.click_pic("box")
 def click_boss():
@@ -47,7 +53,9 @@ def click_enemy():
 def click_pve_cost():
     return gc.click_pic("pvecost")
 def click_end_fight():
-    return  gc.click_pic("endfight")
+    res = gc.click_pic_plus("endfight",200,0)
+    time.sleep(1)
+    return res
 
 # open box can not click ,must click other place
 def click_open_box():
@@ -66,9 +74,14 @@ def click_level20():
     return gc.click_pic_plus("level20",100,0)
 def click_level10():
     return gc.click_pic_plus("level10",100,0)
+def click_level0():
+    return gc.click_pic("level0")
+
+def is_at_break_loss_window():
+    return gc.has_pic("breakloss")
 
 def click_attack_break():
-    return gc.click_pic("attackbreak")
+    return gc.db_click_pic("attackbreak")
 def click_readyforfight():
     return gc.click_pic("readyforfight")
 def click_lose_window():
@@ -78,5 +91,12 @@ def click_lose_window():
 def slide_up(picture_name,h):
     return gc.slide_up(picture_name,h)
 
+
+
+##
+def is_at_win_window():
+    return gc.has_pic("winwindow")
+def click_win_window():
+    return gc.db_click_pic("winwindow")
 
 

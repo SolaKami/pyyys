@@ -1,22 +1,19 @@
 import os
-
 import cv2
 from matplotlib import pyplot as plt
+from Biz import BaseControl
 
-from Biz import ActByPic
-
-project_dir=os.getcwd()+"\\Resource"
-ActByPic.save_screentshot()
-
+BaseControl.save_screentshot()
+project_dir = os.path.dirname(os.getcwd())+"\\Resource"
 img = cv2.imread(project_dir+"\\1.png", 0)
 
 img2 = img.copy()
-template = cv2.imread(project_dir+"\goto-pve.png", 0)
+template = cv2.imread(project_dir+"\\attackbreak.png", 0)
 w, h = template.shape[::-1]
 
 # 6 中匹配效果对比算法
-#methods = ['cv2.TM_CCOEFF']
-methods = [ 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF_NORMED']
+methods = ['cv2.TM_CCOEFF_NORMED']
+#methods = [ 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF_NORMED']
 # methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR', 'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
 
 for meth in methods:

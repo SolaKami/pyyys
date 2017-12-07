@@ -61,7 +61,7 @@ def match(img2,template2):
         # plt.subplot(224), plt.imshow(img, cmap="gray")
         # plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
         # plt.show()
-    print(value)
+    # print(value)
     if value > 0.9:
         return x, y
     else:
