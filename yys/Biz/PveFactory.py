@@ -8,21 +8,25 @@ import pymouse
 PVE_FB_COUNT = 1
 PVE_MISS_COUNT = 0
 PVE_FIGHT_COUNT = 0
+TEAM_MODE = 0
 
 # mode1:fb count
 # mode2:win count
 # mode3:loop
-def start_section(section_num,control_mode,control_num):
+def start_section(section_num,control_mode,control_num,team_mode):
     print("pve mode start")
     global PVE_FB_COUNT
     global PVE_MISS_COUNT
+    global TEAM_MODE
 
+    if team_mode == 1:
+        TEAM_MODE = 1
 
     if control_mode == 1:
         while PVE_FB_COUNT <= control_num:
             if PVE_MISS_COUNT > 50:
                 PVE_MISS_COUNT = 0
-                wi.set_window_top()
+                wi.set_window_top("阴阳师-网易游戏")
             goto_section(section_num)
     elif control_mode == 2:
         while PVE_FIGHT_COUNT < control_num:
@@ -36,9 +40,11 @@ def start_section(section_num,control_mode,control_num):
 
 
 def goto_section(section_num):
+    print("log:")
     global PVE_FB_COUNT
     global PVE_MISS_COUNT
     global PVE_FIGHT_COUNT
+    global TEAM_MODE
     if act.is_at_fb_window():
         fb_loop()
     elif act.is_at_end_fight_window():
@@ -58,7 +64,7 @@ def goto_section(section_num):
             sleep2()
         else:
             print("section not found")
-            act.slide_up("section21",-300)
+            act.slide_up("section",-300)
     elif act.is_at_win_window():
         act.click_win_window()
     elif act.is_at_readyforfight_window():
@@ -66,7 +72,7 @@ def goto_section(section_num):
     elif act.is_at_lose_window():
         act.click_lose_window()
     elif act.is_at_section_door():
-        act.click_goto_fb()
+        act.click_goto_fb(TEAM_MODE)
         PVE_FB_COUNT += 1
     else:
         PVE_MISS_COUNT += 1

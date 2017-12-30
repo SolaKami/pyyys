@@ -11,7 +11,7 @@ WindowInitial.ini_game_window(name)
 time.sleep(2)
 
 #choose auto mode
-PveFactory.start_section(5,2,120)
+PveFactory.start_section(2,1,10,1)
 
 # close window
 # time.sleep(600)

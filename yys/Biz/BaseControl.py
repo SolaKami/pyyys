@@ -4,6 +4,7 @@ from PIL import ImageGrab
 from BaseLib import PictureMatch as pm
 from BaseLib import Mouse
 import numpy as np
+import  time
 
 # define global parameter
 PICTURE_DIR = os.path.dirname(os.getcwd()) + "\\Resource\\"
@@ -114,6 +115,7 @@ def get_image(img_name):
 
 def move_and_click(x, y):
     Mouse.lefClick(x, y)
+    time.sleep(1)
     return
 
 def save_screentshot():

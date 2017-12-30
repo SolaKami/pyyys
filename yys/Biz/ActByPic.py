@@ -36,8 +36,13 @@ def is_at_lose_window():
     return gc.has_pic("losewindow")
 
 #define click function
-def click_goto_fb():
-    return  gc.click_pic("exploreratdoor")
+def click_goto_fb(team_mode):
+    if team_mode == 1:
+        print("click zudui")
+        return gc.click_pic("teamatdoor")
+    else:
+        print("click tansuo")
+        return  gc.click_pic("exploreratdoor")
 def click_section17():
     return gc.click_pic("section17")
 def click_section(section_num):
